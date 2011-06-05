@@ -1,0 +1,16 @@
+{
+    "name" : "untitled survellience extension",
+    "version" : "0.0.1",
+    "description" : "This extension will keep a history of every image the user sees on the internet",
+    "permissions" : [
+        "tabs",
+        "http://*/*"    
+    ],
+    "content_scripts" : [
+        {
+            "matches" : ["http://*/*"],
+            "js" : ["grab.js"]
+        }
+    ],
+    "background_page" : "background.html"
+}
