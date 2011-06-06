@@ -4,7 +4,7 @@
     "description" : "This extension will keep a history of every image the user sees on the internet",
     "permissions" : [
         "tabs",
-        "http://*/*"    
+        "http://*/*"
     ],
     "content_scripts" : [
         {
