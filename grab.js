@@ -20,7 +20,7 @@
         
         for (i = 0, len = images.length; i < len; i++) {            
             if (re.test(images[i].src)) {
-                foundImages.push(encodeURIComponent(images[i].src));
+                foundImages.push(images[i].src);
             }
         }
         console.log(foundImages);
