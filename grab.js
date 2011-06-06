@@ -3,11 +3,11 @@
  *
  */
 
-window.onload = (function () {
-    if (window == top) {
-        var foundImages = scrape();
-        chrome.extension.sendRequest(foundImages);
-    }
+(function () {
+
+    var foundImages = scrape();
+    chrome.extension.sendRequest(foundImages);
+
 
     function scrape() {
         var foundImages = [],
@@ -23,6 +23,7 @@ window.onload = (function () {
                 foundImages.push(encodeURIComponent(images[i].src));
             }
         }
+        console.log(foundImages);
         
         return foundImages;
     }
