@@ -20,7 +20,7 @@ chrome.extension.onRequest.addListener(
                 }            
                 xhr.send(params);
             }
-            sendResponse();
         }
+        sendResponse();
     }
 );
