@@ -4,20 +4,18 @@
  */
 
 chrome.extension.onRequest.addListener(
-    function(foundImages, sender, sendResponse){      
-        if (foundImages) {
-            var url = "http://severe-frost-512.heroku.com/create";
-                
-            var source = foundImages.pop();
-            
-            for (i = 0, len = foundImages.length; i < len; i++) {            
-                console.log(i);
-                var xhr = new XMLHttpRequest(),
-                    img = foundImages[i],
-                    params = 'url=' + img + '&source=' + source;
-                
-                console.log(img);
+    function(found, sender, sendResponse){      
+        if (found) {
+            var url = "http://strong-sunset-836.herokuapp.com/found";
+//            var url = "http:/localhost:3000/found"
+            var foundImages = found.images;
 
+            for (i = 0, len = foundImages.length; i < len; i++) {            
+
+            var xhr = new XMLHttpRequest();
+                img = foundImages[i],
+                params = 'url=' + img + '&source=' + found.source + '&title=' + found.title;
+                
                 xhr.open('POST', url, true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
@@ -25,7 +23,7 @@ chrome.extension.onRequest.addListener(
 	                  if(xhr.readyState == 4 && xhr.status == 200) {
 		                    console.log(xhr.responseText);
 	                  }
-                }            
+                }
                 xhr.send(params);
             }
         }

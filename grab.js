@@ -11,6 +11,7 @@
 
         function scrape() {
             var foundImages = [],
+            found = {},
             images = document.body.getElementsByTagName('img'),
             re = /(http(s?):)|([\/|.|\w|\s])*\.(?:jpg|gif|png)/i;
             
@@ -23,11 +24,15 @@
                     foundImages.push(images[i].src);
                 }
             }
-
-            foundImages.push(window.location.href); // last item is source
-            console.log(foundImages);
             
-            return foundImages;
+            found = {
+                source: window.location.host,
+                title: document.title,
+                images: foundImages
+            }
+
+//            console.log(foundImages);            
+            return found;
         }
     }
 })();
