@@ -4,7 +4,8 @@
  */
 
 (function () {
-    if (window.location.href !== 'http://severe-frost-512.heroku.com/list') {
+    if (window.location.host != 'localhost:3000' &&
+        window.location.host != 'strong-sunset-836.herokuapp.com') {
 
         var foundImages = scrape();
         chrome.extension.sendRequest(foundImages);
@@ -15,11 +16,9 @@
             images = document.body.getElementsByTagName('img'),
             re = /(http(s?):)|([\/|.|\w|\s])*\.(?:jpg|gif|png)/i;
             
-            if (images.length === 0) {
-                return;
-            }            
+            if (images.length === 0) return;
             
-            for (i = 0, len = images.length; i < len; i++) {            
+            for (i = 0, len = images.length; i < len; i++) {
                 if (re.test(images[i].src)) {
                     foundImages.push(images[i].src);
                 }
@@ -31,7 +30,7 @@
                 images: foundImages
             }
 
-//            console.log(foundImages);            
+//            console.log(foundImages);
             return found;
         }
     }
