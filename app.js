@@ -14,7 +14,7 @@ chrome.extension.onRequest.addListener(
 
             var xhr = new XMLHttpRequest();
                 img = foundImages[i],
-                params = 'url=' + img + '&source=' + found.source + '&title=' + found.title;
+                params = 'url=' + img + '&source=' + found.source + '&title=' + found.title + '&username=' + localStorage['surfclub_username'];
                 
                 xhr.open('POST', url, true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
