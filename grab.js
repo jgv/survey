@@ -25,7 +25,7 @@
             }
             
             found = {
-                source: window.location.host,
+                source: window.location.href,
                 title: document.title,
                 images: foundImages
             }
