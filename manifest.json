@@ -1,7 +1,7 @@
 {
-    "name" : "untitled survellience extension",
-    "version" : "0.0.1",
-    "description" : "This extension will keep a history of every image the user sees on the internet",
+    "name" : "Surfcave",
+    "version" : "0.1.0",
+    "description" : "Counterpart to Surfcave. Tracking all images from your browser.",
     "permissions" : [
         "tabs",
         "http://*/*",

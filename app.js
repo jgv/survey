@@ -6,8 +6,9 @@
 chrome.extension.onRequest.addListener(
     function(found, sender, sendResponse){      
         if (found) {
-            var url = "http://strong-sunset-836.herokuapp.com/found";
+            var url = "http://surfcave.com/found";
 //            var url = "http:/localhost:3000/found"
+
             var foundImages = found.images;
 
             for (i = 0, len = foundImages.length; i < len; i++) {            

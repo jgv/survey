@@ -5,17 +5,20 @@
 
 (function () {
     if (window.location.host != 'localhost:3000' &&
-        window.location.host != 'strong-sunset-836.herokuapp.com') {
-
-        var foundImages = scrape();
-        chrome.extension.sendRequest(foundImages);
-
+        window.location.host != 'surfcave.herokuapp.com') {
+        
+        function doScrape() {
+            var foundImages = scrape();        
+            chrome.extension.sendRequest(foundImages);
+        }
+        
         function scrape() {
             var foundImages = [],
             found = {},
             images = document.body.getElementsByTagName('img'),
             re = /(http(s?):)|([\/|.|\w|\s])*\.(?:jpg|gif|png)/i;
             
+            console.log(images);
             if (images.length === 0) return;
             
             for (i = 0, len = images.length; i < len; i++) {
@@ -30,8 +33,9 @@
                 images: foundImages
             }
 
-//            console.log(foundImages);
             return found;
         }
+
+        setInterval('doScrape()', 60000);
     }
 })();
