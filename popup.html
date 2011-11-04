@@ -1,13 +1,16 @@
 <html>
-<head><title>Tabby Options</title></head>
+<head><title>Surfcave Options</title></head>
 <style>
   body, h1 { 
   font-size: 13px; 
   font-family: sans-serif;
 }
   body {
-    width: 200px;
+    width: 400px;
   }
+
+  a { color: #444; text-decoration:none;}
+  a:hover {background:black; color:white}
 </style>
 
 <script type="text/javascript">
@@ -34,11 +37,13 @@ function init() {
 </script>
 
 <body onload="init()">
-  <h1>Welcome to Surfclub</h1>
-  <p>Enter your username.</p>
+  <h1>Welcome to Surfcave.</h1>
+  <p>Enter your desired username.</p>
   <input id="username"></input>
   <div id="status"></div>
   <br>
   <button onclick="save_options()">Save</button>
+  <br>
+  <p>This is a trial version of Surfcave. Your data may be lost.<br> If you would like to participate in beta of Surfcave, email <a href="mailto:jgv@jonathanvingiano.com">jgv@jonathanvingiano.com</a>.</p>
 </body>
 </html>
