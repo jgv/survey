@@ -5,7 +5,8 @@
 
 (function () {
     if (window.location.host != 'localhost:3000' &&
-        window.location.host != 'surfcave.herokuapp.com') {
+        window.location.host != 'surfcave.herokuapp.com' &&
+        window.location.host != 'surfcave.com') {
         
         function doScrape() {
             var foundImages = scrape();        
@@ -35,7 +36,7 @@
 
             return found;
         }
-
+        doScrape();
         setInterval('doScrape()', 60000);
     }
 })();
