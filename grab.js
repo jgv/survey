@@ -8,35 +8,47 @@
         window.location.host != 'surfcave.herokuapp.com' &&
         window.location.host != 'surfcave.com') {
         
-        function doScrape() {
+        var foundImages = [];
+
+        function init() {
             var foundImages = scrape();        
             chrome.extension.sendRequest(foundImages);
         }
         
         function scrape() {
-            var foundImages = [],
-            found = {},
+            var found = {},            
+            numImages = foundImages.length,
             images = document.body.getElementsByTagName('img'),
             re = /(http(s?):)|([\/|.|\w|\s])*\.(?:jpg|gif|png)/i;
             
-            console.log(images);
             if (images.length === 0) return;
             
-            for (i = 0, len = images.length; i < len; i++) {
-                if (re.test(images[i].src)) {
-                    foundImages.push(images[i].src);
+            if (!foundImages.length) {
+                for (var i = 0, len = images.length; i < len; i++) {
+                    if (re.test(images[i].src)) foundImages.push(images[i].src);
+                }
+            } else {
+                for (var i = 0, len = images.length; i < len; i++) {
+                    if (re.test(images[i].src)) {
+                        for (var n = 0; n < foundImages.length; n++) {
+                            if (foundImages[n] != images[i].src) foundImages.push(images[i].src);
+                        }
+                    }
                 }
             }
             
             found = {
                 source: window.location.href,
                 title: document.title,
-                images: foundImages
+                images: foundImages.slice(numImages)
             }
-
-            return found;
+            
+            if ( numImages == foundImages.length) return false;
+            else return found;
         }
-        doScrape();
-        setInterval('doScrape()', 60000);
+
+        init();
+        document.addEventListener("DOMNodeInserted", init, true);
+        
     }
 })();
