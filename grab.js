@@ -16,7 +16,7 @@
         }
         
         function scrape() {
-            var found = {},            
+            var found = {},
             numImages = foundImages.length,
             images = document.body.getElementsByTagName('img'),
             re = /(http(s?):)|([\/|.|\w|\s])*\.(?:jpg|gif|png)/i;
@@ -27,12 +27,11 @@
                 for (var i = 0, len = images.length; i < len; i++) {
                     if (re.test(images[i].src)) foundImages.push(images[i].src);
                 }
-            } else {
+            } else {                
                 for (var i = 0, len = images.length; i < len; i++) {
-                    if (re.test(images[i].src)) {
-                        for (var n = 0; n < foundImages.length; n++) {
-                            if (foundImages[n] != images[i].src) foundImages.push(images[i].src);
-                        }
+                    if (re.test(images[i].src && foundImages.indexOf(images[i].src) === -1)) {
+                        console.log('adding after node instertion');
+                        foundImages.push(images[i].src);
                     }
                 }
             }
@@ -43,7 +42,7 @@
                 images: foundImages.slice(numImages)
             }
             
-            if ( numImages == foundImages.length) return false;
+            if ( numImages == foundImages.length) return;
             else return found;
         }
 
