@@ -1,5 +1,7 @@
+<!doctype html>
 <html>
 <head><title>Surfcave Options</title></head>
+
 <style>
   body, h1 { 
   font-size: 13px; 
@@ -13,37 +15,10 @@
   a:hover {background:black; color:white}
 </style>
 
-<script type="text/javascript">
+<script src="js/popup.js" type="text/javascript"></script>
 
-// Saves options to localStorage.
-function save_options() {
-    // set length of timeout
-    var input = document.getElementById("username");
-    var username = input.value;
-    localStorage["surfclub_username"] = username;
-
-    // Update status to let user know options were saved.
-    var status = document.getElementById("status");
-    status.innerHTML = "Thank you.";
-    setTimeout(function() {
-        status.innerHTML = "";
-    }, 750);
-}
-
-function init() {
-    var input = document.getElementById("username");
-    if (localStorage["surfclub_username"]) input.value = localStorage["surfclub_username"];
-}
-</script>
-
-<body onload="init()">
+<body>
   <h1>Welcome to Surfcave.</h1>
-  <p>Enter your desired username.</p>
-  <input id="username"></input>
-  <div id="status"></div>
-  <br>
-  <button onclick="save_options()">Save</button>
-  <br>
-  <p>This is a trial version of Surfcave. Your data may be lost.<br> If you would like to participate in beta of Surfcave, email <a href="mailto:jgv@jonathanvingiano.com">jgv@jonathanvingiano.com</a>.</p>
+  <div id="sc"></div>
 </body>
 </html>
