@@ -7,7 +7,6 @@ var user = null;
 
 function uid(){
     chrome.cookies.getAll({name:"___SC", domain:"surfcave.com"}, function(sc){
-        console.log(sc[0].value);
         user = unescape(sc[0].value);
     });    
 } uid();
