@@ -1,17 +1,18 @@
 {
-    "name" : "Surfcave",
-    "version" : "0.2.0",
-    "description" : "Counterpart to Surfcave. Tracking all images from your browser.",
-    "permissions" : [ "cookies", "tabs","http://*/*", "https://*/*" ],
-    "content_scripts" : [
-        {
-            "matches" : ["http://*/*", "https://*/*"], 
-            "js" : ["js/grab.js"]
-        }
-    ],
-    "background_page" : "background.html",
-    "browser_action": {
-        "default_popup": "popup.html",
-        "default_icon": "images/icon.png"
+  "name" : "Surfcave",
+  "version" : "0.2.0",
+  "description" : "Counterpart to Surfcave. Tracking all images from your browser.",
+  "permissions" : [ "cookies", "tabs","http://*/*", "https://*/*" ],
+  "content_scripts" : [
+    {
+      "matches" : ["http://*/*", "https://*/*"], 
+      "js" : ["js/grab.js"]
     }
+  ],
+  "background_page" : "background.html"
+  // ,
+  //   "browser_action": {
+  //       "default_popup": "popup.html",
+  //       "default_icon": "images/icon.png"
+  //   }
 }

@@ -6,13 +6,15 @@
 var user = null;
 
 function uid(){
-    chrome.cookies.getAll({name:"___SC", domain:"surfcave.com"}, function(sc){
+    chrome.cookies.getAll({name:"_surfcave_session", domain:"surfcave.com"}, function(sc){
         user = unescape(sc[0].value);
-    });    
+      console.log(sc);
+    });
+  console.log(user);
 } uid();
 
-chrome.extension.onRequest.addListener(
-    function(request, sender, sendResponse){      
+chrome.extension.onMessage.addListener(
+    function(request, sender, sendResponse) {
         if (request && request.method === 'grab') {
             if (user != null) {
                 console.log(user);
