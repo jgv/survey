@@ -57,16 +57,3 @@
     
   }
 })();
-
-chrome.extension.onRequest.addListener(
-  function(request, sender, sendResponse){
-    if (request.method === 'fromPopup'){            
-      chrome.extension.sendRequest({method: "login"}, function(response){
-        sendResponse({data:response});            
-      });
-    } else {
-      sendResponse({});
-      console.log('snubbing u');
-    }
-  }
-);
