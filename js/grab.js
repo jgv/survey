@@ -15,7 +15,7 @@
       if (foundImages) {
         console.log('sending message')
         chrome.extension.sendMessage(foundImages, function(response){
-          console.log(response)
+          console.log(response);
         });
       }
     }
