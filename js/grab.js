@@ -3,10 +3,17 @@
  *
  */
 
-(function () {
-  if (window.location.host != 'localhost:3000' &&
-      window.location.host != 'surfcave.herokuapp.com' &&
-      window.location.host != 'surfcave.com') {
+(function () {    
+
+  if (window.location.host == 'localhost:3000' ||
+      window.location.host == 'surfcave.herokuapp.com' ||
+      window.location.host == 'surfcave.com') {
+
+    var extCheck = document.createElement('div');
+    extCheck.id = "surfcave_ext_check";
+    document.body.insertBefore(extCheck, document.body.firstChild);
+
+   } else {
     
     var foundImages = [];
 

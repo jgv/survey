@@ -1,4 +1,5 @@
 {
+  "manifest_version": 2,
   "name" : "Surfcave",
   "version" : "0.2.0",
   "description" : "Counterpart to Surfcave. Tracking all images from your browser.",
@@ -9,5 +10,7 @@
       "js" : ["js/grab.js"]
     }
   ],
-  "background_page" : "background.html"
+  "background" : {
+    "page": "background.html"
+  }
 }
