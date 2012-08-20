@@ -3,7 +3,7 @@
  *
  */
 
-var productionCookie, localCookie, dev = true;
+var productionCookie, localCookie, dev = false;
 
 var send = function(request, sender, sendResponse) {
 

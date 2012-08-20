@@ -7,7 +7,8 @@
 
   if (window.location.host == 'localhost:3000' ||
       window.location.host == 'surfcave.herokuapp.com' ||
-      window.location.host == 'surfcave.com') {
+      window.location.host == 'surfcave.com' ||
+      window.location.host == 'lvh.me:3000') {
 
     var extCheck = document.createElement('div');
     extCheck.id = "surfcave_ext_check";
