@@ -51,6 +51,7 @@ var send = function(request, sender, sendResponse) {
 //chrome.cookies.remove({ "name": "sc", "url": "http://localhost"});
 
 chrome.cookies.get({ "name": "sc", "url": "http://surfcave.com"}, function(c) { 
+  console.log(c)
   if (c && !dev) productionCookie = c.value;
 });
 

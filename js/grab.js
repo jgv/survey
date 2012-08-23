@@ -61,7 +61,7 @@
     }
 
     init();
-    document.addEventListener("DOMNodeInserted", init, true);
+    document.addEventListener("DOMSubtreeModified", init, true);
     
   }
 })();
