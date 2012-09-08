@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name" : "Surfcave",
   "version" : "0.3.4",
-  "description" : "Counterpart to Surfcave. Tracking all images from your browser.",
+  "description" : "Surfcave is a free image sharing extension and viewing platform that allows members to present their browsing habits in real time.",
   "permissions" : [ "cookies", "tabs","http://*/*", "https://*/*" ],
   "content_scripts" : [
     {
