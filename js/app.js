@@ -7,19 +7,22 @@ var productionCookie, localCookie, dev = false;
 
 var send = function(request, sender, sendResponse) {
 
-  
+  // get the cookie
   var cookie = productionCookie || localCookie;
 
   if (cookie) {
 
+    // assign images and parse cookie
     var url, foundImages = request.images, data = cookie.split('___');
 
+    // where will we send the data
     if (productionCookie) {
       url = "http://surfcave.com/images.json";
     } else {
       url = "http://localhost:3000/images.json";
     }
 
+    // send each image off with xhr
     for (i = 0, len = foundImages.length; i < len; i++) {
 
       var xhr = new XMLHttpRequest();
@@ -35,27 +38,31 @@ var send = function(request, sender, sendResponse) {
 
       xhr.onreadystatechange = function() {
         if(xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.responseText);
+          if (dev) console.log(xhr.responseText);
         }
       }
       xhr.send(params);
     }
+    // ping the content script and say its all good
     sendResponse({ status: 'ok' });
   } else {
-    console.log('not logged in');
+    if (dev) console.log('not logged in');
+    // no cookie ;_;
     sendResponse({ status: 'logged out' });
     // handle it if we want to
   }
 };
 
-//chrome.cookies.remove({ "name": "sc", "url": "http://localhost"});
-
+// get the production cookie
 chrome.cookies.get({ "name": "sc", "url": "http://surfcave.com"}, function(c) { 
-  console.log(c)
   if (c && !dev) productionCookie = c.value;
 });
 
+// get the dev cookie
 chrome.cookies.get({ "name": "sc", "url": "http://localhost"}, function(c) { 
-  if (c) localCookie = c.value; });
+  if (dev) console.log(c)
+  if (c) localCookie = c.value;
+});
 
+// talk to content script
 chrome.extension.onMessage.addListener(send);
